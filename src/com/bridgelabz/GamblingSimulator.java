@@ -1,38 +1,40 @@
 package com.bridgelabz;
 
 public class GamblingSimulator {
-
     public static void main(String[] args) {
         System.out.println("Welcome to Gambling Simulator");
-        int total_Amount = 100;
+        int total_Stake_Amount = 100;
         int bet_Amount = 1;
-        while (total_Amount > 50 && total_Amount < 150) {
-            int gameAmount = (int) Math.floor(Math.random() * 10) % 2;
+        int winning = 0;
 
-            System.out.println("Gambler received amount : " + gameAmount);
+        for (int days = 1; days <= 20; days++) {
+            while (total_Stake_Amount > 50 && total_Stake_Amount < 150) {
+                int gameAmount = (int) (Math.floor(Math.random() * 10)) % 2;
 
-            if (bet_Amount == gameAmount) {
-                System.out.println("Gambler won the current game");
-                total_Amount = total_Amount + bet_Amount;
-                System.out.println("Total Current case of gambler has : " + total_Amount);
+                //System.out.println("Gambler received amount : " + gameAmount);
 
-            } else {
-                System.out.println("Gambler lost the  current game");
-                total_Amount = total_Amount - bet_Amount;
-                System.out.println("Total Current case of gambler has : " + total_Amount);
+                if (bet_Amount == gameAmount) {
+                   // System.out.println("Gambler won the current game");
+                    total_Stake_Amount = total_Stake_Amount + bet_Amount;
+                   // System.out.println("Total Current cash of gambler has : " + total_Stake_Amount);
 
+                }
+
+                else {
+                    //System.out.println("Gambler lost the  current game");
+                    total_Stake_Amount = total_Stake_Amount - bet_Amount;
+                    //System.out.println("Total Current cash of gambler has : " + total_Stake_Amount);
+                }
             }
+            if (total_Stake_Amount == 150) {
+                System.out.println("Player has won gambler for day " +days);
+                winning += 50;
+            } else {
+                System.out.println("Player has won gambler for day " +days);
+                winning -= 50;
+            }
+
+            System.out.println("Total win price " + winning + "\n");
         }
-        System.out.println("Total amount received by gambler has :" + total_Amount);
-
-        if (total_Amount == 50 || total_Amount == 150) {
-            System.out.println(".....................");
-            System.out.println("Player would like to resign for current day !");
-            System.out.println("....................");
-        }
-
-
     }
-
-
 }
